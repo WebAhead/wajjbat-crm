@@ -16,7 +16,7 @@ const ApproveButton = ({ record }) => {
   console.log(record);
   const [approve, { loading }] = useMutation({
     type: "update",
-    resource: "comments",
+    resource: "businesses",
     payload: { id: record.id, data: { isApproved: true } }
   });
   return <Button label="Approve" onClick={approve} disabled={loading} />;
@@ -38,7 +38,6 @@ export const UserList = props => (
 export const UserEdit = (props, record) => (
   <Edit {...props}>
     <SimpleForm>
-      {console.log(record)}
       <TextInput source="first_name" />
       <TextInput source="last_name" />
     </SimpleForm>
