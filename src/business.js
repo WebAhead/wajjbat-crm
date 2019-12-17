@@ -8,20 +8,8 @@ import {
   Edit,
   SimpleForm,
   TextInput,
-  useMutation,
-  ReferenceField,
-  Button
+  NullableBooleanInput
 } from "react-admin";
-
-const ApproveButton = ({ record }) => {
-  console.log(record);
-  const [approve, { loading }] = useMutation({
-    type: "update",
-    resource: "businesses",
-    payload: { id: record.id, data: { isApproved: true } }
-  });
-  return <Button label="Approve" onClick={approve} disabled={loading} />;
-};
 
 export const BusinessList = props => (
   <List {...props}>
@@ -35,8 +23,7 @@ export const BusinessList = props => (
       <TextField source="lat" />
       <TextField source="lng" />
       <TextField source="business_type" />
-
-      <ApproveButton />
+      <TextField source="approved" />
       <EditButton />
     </Datagrid>
   </List>
@@ -48,12 +35,18 @@ export const BusinessEdit = (props, record) => (
       <TextInput source="name" />
       <TextInput source="phone" />
       <TextInput source="email" />
-      <TextInput source="description" />
+      <TextInput multiline source="description" />
       <TextInput source="cuisine" />
       <TextInput source="address" />
       <TextInput source="lat" />
       <TextInput source="lng" />
       <TextInput source="business_type" />
+
+      <NullableBooleanInput
+        label="approve?"
+        helperText="choose Yes or No to approve business"
+        source="approved"
+      />
     </SimpleForm>
   </Edit>
 );
