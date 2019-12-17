@@ -6,7 +6,9 @@ import { BusinessList, BusinessEdit } from "./business";
 
 const App = () => {
   return (
-    <Admin dataProvider={simpleRestProvider("http://localhost:8000/admin")}>
+    <Admin
+      dataProvider={simpleRestProvider(`${process.env.REACT_APP_API}/admin`)}
+    >
       <Resource name="users" list={UserList} edit={UserEdit} />
       <Resource name="businesses" list={BusinessList} edit={BusinessEdit} />
     </Admin>
