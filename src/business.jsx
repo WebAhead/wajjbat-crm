@@ -8,6 +8,7 @@ import {
   Edit,
   SimpleForm,
   TextInput,
+  BooleanField,
   useMutation,
   TopToolbar,
   Button
@@ -60,7 +61,7 @@ export const BusinessList = props => (
       <TextField source="lat" />
       <TextField source="lng" />
       <TextField source="business_type" />
-
+      <BooleanField source="approved" />
       <EditButton />
     </Datagrid>
   </List>
