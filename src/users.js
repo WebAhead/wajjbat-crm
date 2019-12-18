@@ -7,20 +7,9 @@ import {
   EditButton,
   Edit,
   SimpleForm,
-  TextInput,
-  useMutation,
-  Button
+  TextInput
 } from "react-admin";
 
-const ApproveButton = ({ record }) => {
-  console.log(record);
-  const [approve, { loading }] = useMutation({
-    type: "update",
-    resource: "businesses",
-    payload: { id: record.id, data: { isApproved: true } }
-  });
-  return <Button label="Approve" onClick={approve} disabled={loading} />;
-};
 
 export const UserList = props => (
   <List {...props}>
@@ -29,7 +18,6 @@ export const UserList = props => (
       <TextField source="first_name" />
       <TextField source="last_name" />
       <EmailField source="email" />
-      <ApproveButton />
       <EditButton />
     </Datagrid>
   </List>
