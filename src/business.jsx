@@ -9,7 +9,7 @@ import {
   SimpleForm,
   TextInput,
   useMutation,
-  ReferenceField,
+  TopToolbar,
   Button
 } from "react-admin";
 
@@ -18,10 +18,35 @@ const ApproveButton = ({ record }) => {
   const [approve, { loading }] = useMutation({
     type: "update",
     resource: "businesses",
-    payload: { id: record.id, data: { isApproved: true } }
+    payload: { id: record && record.id, data: { approved: true } }
   });
-  return <Button label="Approve" onClick={approve} disabled={loading} />;
+
+  const [disApprove, { disApprovedloading }] = useMutation({
+    type: "update",
+    resource: "businesses",
+    payload: { id: record && record.id, data: { approved: false } }
+  });
+
+  if (!record) {
+    return "";
+  }
+
+  return record.approved === "approved" ? (
+    <Button
+      label="Disapprove"
+      onClick={disApprove}
+      disabled={disApprovedloading}
+    />
+  ) : (
+    <Button label="Approve" onClick={approve} disabled={loading} />
+  );
 };
+
+const Toolbar = props => (
+  <TopToolbar {...props}>
+    <ApproveButton record={props.data} />
+  </TopToolbar>
+);
 
 export const BusinessList = props => (
   <List {...props}>
@@ -36,14 +61,13 @@ export const BusinessList = props => (
       <TextField source="lng" />
       <TextField source="business_type" />
 
-      <ApproveButton />
       <EditButton />
     </Datagrid>
   </List>
 );
 
-export const BusinessEdit = (props, record) => (
-  <Edit {...props}>
+export const BusinessEdit = props => (
+  <Edit actions={<Toolbar />} title="Edit business" {...props}>
     <SimpleForm>
       <TextInput source="name" />
       <TextInput source="phone" />

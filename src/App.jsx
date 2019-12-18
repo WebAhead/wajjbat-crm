@@ -2,7 +2,7 @@ import React from "react";
 import { Admin, Resource } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 import { UserList, UserEdit } from "./users";
-import { BusinessList, BusinessEdit } from "./business";
+import { BusinessList, BusinessEdit } from "./business.jsx";
 
 const App = () => {
   return (
