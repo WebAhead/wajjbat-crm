@@ -39,8 +39,8 @@ const ApproveButton = ({ record }) => {
       disabled={disApprovedloading}
     />
   ) : (
-    <Button label="Approve" onClick={approve} disabled={loading} />
-  );
+      <Button label="Approve" onClick={approve} disabled={loading} />
+    );
 };
 
 const Toolbar = props => (
@@ -54,12 +54,8 @@ export const BusinessList = props => (
     <Datagrid>
       <TextField source="name" />
       <TextField source="phone" />
-      <EmailField source="email" />
-      <TextField source="description" />
       <TextField source="cuisine" />
       <TextField source="address" />
-      <TextField source="lat" />
-      <TextField source="lng" />
       <TextField source="business_type" />
       <BooleanField source="approved" />
       <EditButton />
