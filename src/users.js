@@ -10,6 +10,7 @@ import {
   TextInput
 } from "react-admin";
 
+
 export const UserList = props => (
   <List {...props}>
     <Datagrid>
@@ -25,7 +26,6 @@ export const UserList = props => (
 export const UserEdit = (props, record) => (
   <Edit {...props}>
     <SimpleForm>
-      {console.log(record)}
       <TextInput source="first_name" />
       <TextInput source="last_name" />
     </SimpleForm>
