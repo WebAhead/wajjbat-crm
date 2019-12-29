@@ -10,6 +10,7 @@ import {
   Datagrid,
   TextField,
   EmailField,
+  ImageField,
   EditButton,
   Edit,
   SimpleForm,
@@ -47,8 +48,28 @@ export const BusinessEdit = props => (
   </Edit>
 );
 
+const Aside = ({ record }) => {
+  if (!record) {
+    return "";
+  }
+  return (
+    <div style={{ margin: "0px 150px" }}>
+      <img style={{ width: "270px" }} src={record.primaryimage} alt="" />
+      <div style={{ marginTop: "15px" }}>
+        {record.subImages.map(({ image_url }) => (
+          <img
+            style={{ maxWidth: "90px", height: "90px" }}
+            src={image_url}
+            alt=""
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const BusinessShow = props => (
-  <Show {...props}>
+  <Show aside={<Aside />} {...props}>
     <SimpleShowLayout>
       <TextField source="name" />
       <TextField source="phone" />

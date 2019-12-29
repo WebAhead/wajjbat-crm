@@ -26,7 +26,7 @@ const ShowReviews = ({ record = {} }) => {
       .then(res => res.json())
       .then(data => setReviews(data));
   }, []);
-
+  console.log(reviews);
   return (
     <div>
       <h1>List of reviews here :</h1>
