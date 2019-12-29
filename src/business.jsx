@@ -16,19 +16,14 @@ import {
   TextInput,
   BooleanField
 } from "react-admin";
-import { crudGetList } from "ra-core";
 
 export const BusinessList = props => (
   <List {...props}>
     <Datagrid>
       <MyUrlField source="name" />
       <TextField source="phone" />
-      <EmailField source="email" />
-      <TextField source="description" />
       <TextField source="cuisine" />
       <TextField source="address" />
-      <TextField source="lat" />
-      <TextField source="lng" />
       <TextField source="business_type" />
       <BooleanField source="approved" />
       <EditButton />
