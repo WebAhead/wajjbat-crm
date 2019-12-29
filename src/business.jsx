@@ -1,58 +1,27 @@
 import React from "react";
+import ShowReviews from "./components/ShowReviews";
+import MyUrlField from "./components/MyUrlField";
+import Toolbar from "./components/TopToolbar";
+
 import {
   List,
+  Show,
+  SimpleShowLayout,
   Datagrid,
   TextField,
   EmailField,
+  ImageField,
   EditButton,
   Edit,
   SimpleForm,
   TextInput,
-  BooleanField,
-  useMutation,
-  TopToolbar,
-  Button
+  BooleanField
 } from "react-admin";
-
-const ApproveButton = ({ record }) => {
-  console.log(record);
-  const [approve, { loading }] = useMutation({
-    type: "update",
-    resource: "businesses",
-    payload: { id: record && record.id, data: { approved: true } }
-  });
-
-  const [disApprove, { disApprovedloading }] = useMutation({
-    type: "update",
-    resource: "businesses",
-    payload: { id: record && record.id, data: { approved: false } }
-  });
-
-  if (!record) {
-    return "";
-  }
-
-  return record.approved === "approved" ? (
-    <Button
-      label="Disapprove"
-      onClick={disApprove}
-      disabled={disApprovedloading}
-    />
-  ) : (
-      <Button label="Approve" onClick={approve} disabled={loading} />
-    );
-};
-
-const Toolbar = props => (
-  <TopToolbar {...props}>
-    <ApproveButton record={props.data} />
-  </TopToolbar>
-);
 
 export const BusinessList = props => (
   <List {...props}>
     <Datagrid>
-      <TextField source="name" />
+      <MyUrlField source="name" />
       <TextField source="phone" />
       <TextField source="cuisine" />
       <TextField source="address" />
@@ -69,7 +38,7 @@ export const BusinessEdit = props => (
       <TextInput source="name" />
       <TextInput source="phone" />
       <TextInput source="email" />
-      <TextInput source="description" />
+      <TextInput multiline source="description" />
       <TextInput source="cuisine" />
       <TextInput source="address" />
       <TextInput source="lat" />
@@ -77,4 +46,41 @@ export const BusinessEdit = props => (
       <TextInput source="business_type" />
     </SimpleForm>
   </Edit>
+);
+
+const Aside = ({ record }) => {
+  if (!record) {
+    return "";
+  }
+  return (
+    <div style={{ margin: "0px 150px" }}>
+      <img style={{ width: "270px" }} src={record.primaryimage} alt="" />
+      <div style={{ marginTop: "15px" }}>
+        {record.subImages.map(({ image_url }) => (
+          <img
+            style={{ maxWidth: "90px", height: "90px" }}
+            src={image_url}
+            alt=""
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const BusinessShow = props => (
+  <Show aside={<Aside />} {...props}>
+    <SimpleShowLayout>
+      <TextField source="name" />
+      <TextField source="phone" />
+      <TextField source="email" />
+      <TextField source="description" />
+      <TextField source="cuisine" />
+      <TextField source="address" />
+      <TextField source="lat" />
+      <TextField source="lng" />
+      <TextField source="business_type" />
+      <ShowReviews />
+    </SimpleShowLayout>
+  </Show>
 );
