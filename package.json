@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.37",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.1.2",
+    "node-sass": "^4.13.0",
     "ra-core": "^3.0.4",
     "ra-data-simple-rest": "^3.0.3",
     "ra-input-rich-text": "^3.0.1",
