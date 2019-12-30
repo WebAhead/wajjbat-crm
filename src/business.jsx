@@ -56,7 +56,7 @@ const Aside = ({ record }) => {
     <div style={{ margin: "0px 150px" }}>
       <img style={{ width: "270px" }} src={record.primaryimage} alt="" />
       <div style={{ marginTop: "15px" }}>
-        {record.subImages.map(({ image_url }) => (
+        {record.subImages && record.subImages.map(({ image_url }) => (
           <img
             style={{ maxWidth: "90px", height: "90px" }}
             src={image_url}

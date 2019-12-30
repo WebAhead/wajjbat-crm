@@ -39,18 +39,18 @@ const ShowReviews = ({ record = {} }) => {
                   <div className={style["profile-details"]}>
                     <img
                       className={style["profile-image"]}
-                      src={currentReview.primaryimage}
+                      src={currentReview.profile_image}
                       alt=""
                     />
 
                     <div className={style["profile-details"]}>
                       <span className={style["profile-fullname"]}>
-                        {currentReview.userfirstname}
+                        {currentReview.firstname}
                       </span>
                     </div>
                     <div className={style["profile-details"]}>
                       <span className={style["profile-fullname"]}>
-                        {currentReview.userlasttname}
+                        {currentReview.lastname}
                       </span>
                     </div>
                   </div>
@@ -78,8 +78,8 @@ const ShowReviews = ({ record = {} }) => {
           );
         })
       ) : (
-        <p>no reviews there</p>
-      )}
+          <p>no reviews there</p>
+        )}
     </div>
   );
 };
