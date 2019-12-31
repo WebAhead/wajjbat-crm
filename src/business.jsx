@@ -2,6 +2,7 @@ import React from "react";
 import ShowReviews from "./components/ShowReviews";
 import MyUrlField from "./components/MyUrlField";
 import Toolbar from "./components/TopToolbar";
+import StatusField from "./components/StatusField";
 
 import {
   List,
@@ -26,7 +27,7 @@ export const BusinessList = props => (
       <TextField source="cuisine" />
       <TextField source="address" />
       <TextField source="business_type" />
-      <BooleanField source="approved" />
+      <StatusField source="approved" />
       <EditButton />
     </Datagrid>
   </List>
