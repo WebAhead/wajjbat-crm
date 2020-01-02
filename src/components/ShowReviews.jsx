@@ -6,7 +6,7 @@ const ShowReviews = ({ record = {} }) => {
   const [reviews, setReviews] = React.useState([]);
 
   const deleteReview = id => {
-    fetch(`http://localhost:8000/admin/deletereviewbyid/${id}`, {
+    fetch(`${process.env.REACT_APP_API}/admin/deletereviewbyid/${id}`, {
       method: "GET",
       headers: {
         Accept: "applecation/json",
@@ -16,7 +16,7 @@ const ShowReviews = ({ record = {} }) => {
   };
 
   React.useEffect(() => {
-    fetch(`http://localhost:8000/admin/reviewsbyuserid/${record.id}`, {
+    fetch(`${process.env.REACT_APP_API}/admin/reviewsbyuserid/${record.id}`, {
       method: "GET",
       headers: {
         Accept: "applecation/json",
