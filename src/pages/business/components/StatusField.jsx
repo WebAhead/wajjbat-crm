@@ -4,18 +4,19 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 
 const StatusField = ({ record = {}, source }) => {
-    if (record.approved === 'pending') {
+    if (record.status === 'pending') {
         return <LoopIcon />
     }
 
-    if (record.approved === 'approved') {
+    if (record.status === 'approved') {
         return <CheckIcon />
     }
 
-    if (record.approved === 'disapproved') {
+    if (record.status === 'disapproved') {
         return <ClearIcon />
     }
+
+    return ''
 }
 
 export default StatusField;
-

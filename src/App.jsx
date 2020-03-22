@@ -1,8 +1,8 @@
 import React from "react";
 import { Admin, Resource } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
-import { UserList, UserEdit } from "./users";
-import { BusinessList, BusinessEdit, BusinessShow } from "./business.jsx";
+import { UserList, UserEdit } from "./pages/users";
+import { BusinessList, BusinessEdit, BusinessShow } from "./pages/business";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import BusinessIcon from '@material-ui/icons/Business';
 
